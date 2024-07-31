@@ -1,0 +1,17 @@
+.wrapper {
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    transition: opacity 0.3s ease 0s;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.icon {
+    font-size: 24px;
+    line-height: 24px;
+    padding: 8px;
+    color: #fff;
+    transition: opacity 0.3s ease 0s;
+}

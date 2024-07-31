@@ -1,0 +1,43 @@
+.menu-list {
+    min-width: 181px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 8px 32px;
+    background: rgb(255, 255, 255);
+    opacity: 0.95;
+    z-index: 10500;
+    transform: scale(0);
+}
+
+.menu-option {
+    padding: 10px 12px;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.menu-option:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.menu-option:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+.menu-icon {
+    width: 17px;
+    height: 17px;
+}
+
+.menu-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(22, 24, 35);
+    height: 17px;
+    line-height: 17px;
+    margin-left: 11px;
+}

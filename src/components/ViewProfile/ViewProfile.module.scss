@@ -1,0 +1,363 @@
+.profile-wrapper {
+    overflow: hidden;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(-59px + 100vh);
+    padding: 32px 24px 36px;
+}
+
+.profile-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 624px;
+    min-height: 140px;
+    padding-right: 92px;
+    padding-left: 0px;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.5px solid rgba(22, 24, 35, 0.12);
+}
+
+.title-container {
+    flex: 1 1 0%;
+    margin-left: 20px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.user-username {
+    display: flex;
+    align-items: baseline;
+    font-family: var(--font-TikTok-Display);
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 38px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+
+    p {
+        margin-right: 6px;
+    }
+}
+
+.username {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    height: 25px;
+    overflow: hidden;
+    max-width: 450px;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-end;
+}
+
+.edit-profile-entrance {
+    position: relative;
+    height: 36px;
+    margin: 16px 0px 0px;
+}
+
+.edit-profile-btn {
+    min-height: 36px;
+    height: 36px;
+    justify-content: center;
+    padding: 0px 12px;
+    min-width: 136px;
+    line-height: 24px;
+    margin-right: 8px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    color: rgb(22, 24, 35);
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    p {
+        margin-left: 6px;
+        font-weight: 500;
+        font-size: 1.6rem;
+        font-family: var(--font-TikTok-Display);
+    }
+
+    &:hover {
+        border-color: rgb(208, 209, 211);
+        background-color: rgb(248, 248, 248);
+    }
+
+    &:active {
+        border-color: rgb(208, 209, 211);
+        background-color: rgb(241, 241, 242);
+    }
+}
+
+.follow-container {
+    width: 208px;
+    height: 36px;
+    margin-top: 16px;
+    display: flex;
+}
+
+.message-btn {
+    min-width: 164px;
+    min-height: 36px;
+    line-height: 22px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: var(--font-TikTok-Display);
+    padding: 6px 8px;
+    user-select: none;
+    margin-right: 8px;
+    border-radius: 4px;
+    color: rgb(254, 44, 85);
+    border: 1px solid rgb(254, 44, 85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.unfollow-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.follow-btn {
+    font-family: var(--font-TikTok-Display);
+    min-width: 208px;
+    min-height: 36px;
+    padding: 6px 8px;
+    line-height: 22px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    justify-content: center;
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(254, 44, 85);
+}
+
+.info-count {
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+}
+
+.count-container {
+    display: flex;
+    align-items: baseline;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 24px;
+    margin-right: 20px;
+    color: rgb(22, 24, 35);
+    cursor: pointer;
+}
+
+.count-number {
+    font-weight: 700;
+}
+
+.count-description {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 20px;
+    margin-left: 6px;
+    color: rgba(22, 24, 35, 0.75);
+}
+
+.user-description {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 21px;
+    margin-top: 10px;
+    color: rgb(22, 24, 35);
+}
+
+.share-link {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.link {
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 21px;
+    padding-left: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.btn-container {
+    position: absolute;
+    top: 11px;
+    right: 1px;
+    gap: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.profile-main {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 490px;
+}
+
+.tab-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.tab-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+
+    &::after {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.12);
+        transform: scaleY(0.5);
+    }
+}
+
+.tab-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 24px;
+    height: 44px;
+    padding: 0px 32px;
+    cursor: pointer;
+    color: rgb(115, 116, 123);
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+        color: rgb(22, 24, 35);
+    }
+}
+
+.tab-content[active] {
+    color: rgb(22, 24, 35);
+    border-bottom: 2px solid rgb(22, 24, 35);
+}
+
+.tab-title {
+    margin-left: 6px;
+}
+
+.soft-type-container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+}
+
+.soft-type-btn {
+    height: 32px;
+    padding: 8px;
+    display: flex;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 19.5px;
+    letter-spacing: 0.061px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-right: 16px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgb(138, 139, 145);
+
+    &:hover {
+        color: rgb(22, 24, 35);
+    }
+
+    &[active] {
+        color: rgb(22, 24, 35);
+    }
+}
+
+.video-user-list-wrapper {
+    width: 100%;
+}
+
+.video-user-list {
+    display: grid;
+    width: 100%;
+    gap: 24px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(184px, 1fr));
+}
+
+.video-list-empty,
+.liked-video-private {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-title,
+.like-title {
+    font-family: var(--font-TikTok-Display);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 30px;
+    color: rgb(22, 24, 35);
+    margin-top: 24px;
+}
+
+.empty-decs,
+.like-desc {
+    font-size: 1.6rem;
+    line-height: 21px;
+    font-weight: 400;
+    color: rgba(22, 24, 35, 0.75);
+    margin-top: 8px;
+}
