@@ -10,7 +10,7 @@ export const getFollowing = async (token, page) => {
                 page,
             },
         });
-        return res.data;
+        return res;
     }
     catch (error) {
         console.log(error);

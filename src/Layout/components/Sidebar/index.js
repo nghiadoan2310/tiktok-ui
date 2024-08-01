@@ -25,6 +25,7 @@ import Footer from './Footer';
 import Button from '~/components/Button';
 import { ModalContext } from "~/components/Provider";
 import { AuthContext } from "~/components/Provider";
+import { useCallback } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -34,24 +35,80 @@ function Sidebar() {
     const ContextAuth = useContext(AuthContext);
 
     const [followingUser, setFollowingUser] = useState([]);
+    const [totalPageFollow, setTotalPageFollow] = useState(null);
+    const [pageFollow, setPageFollow] = useState(1);
+    const [isShowMore, setIsShowMore] = useState(true);
 
     useEffect(() => {
         //Dùng axios
         const fetchApi = async () => {
             //result là giá trị trả về của việc tìm kiếm
-            const result = await followingService.getFollowing(ContextAuth.tokenStr, 1);
+            const data = await followingService.getFollowing(ContextAuth.tokenStr, 1);
             
-            setFollowingUser(result);
+            if(data) {
+                setTotalPageFollow(data.meta?.pagination?.total_pages);           
+                    
+                setFollowingUser(data.data);
+            }
         };
 
         fetchApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    useEffect(() => {
+        if(!totalPageFollow || pageFollow > totalPageFollow || pageFollow === 1) {
+            return;
+        }
+
+        if(pageFollow === totalPageFollow && followingUser?.length > 5) {
+            setIsShowMore(false)
+        } else {
+            setIsShowMore(true)
+        }
+
+        //Dùng axios
+        const fetchApi = async () => {
+            //result là giá trị trả về của việc tìm kiếm
+            const result = await followingService.getFollowing(ContextAuth.tokenStr, pageFollow);
+
+            if(result) {
+                setFollowingUser((prev) => [...prev,...result.data]);
+            }           
+        };
+
+        fetchApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pageFollow]);
+
+    useEffect(() => {
+        if(totalPageFollow && pageFollow > totalPageFollow) {
+            setPageFollow(1);
+            setIsShowMore(true);
+
+            const fetchApi = async () => {
+                //result là giá trị trả về của việc tìm kiếm
+                const result = await followingService.getFollowing(ContextAuth.tokenStr, 1);
+    
+                if(result) {
+                    setFollowingUser(result.data);
+                }           
+            };
+    
+            fetchApi();
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pageFollow])
+
     const handleShowLoginForm = () => {
         ContextModal.handleShowModalLoginForm();
         ContextModal.handleShowModal();
     }
+
+    const handleSeeMoreFollowingAccount = useCallback(() => {
+        setPageFollow((prev) => prev + 1);
+    }, [])
 
     return (
         <aside className={cx('wrapper')}>
@@ -93,7 +150,9 @@ function Sidebar() {
                 <FollowingAccounts 
                     label={'Các tài khoản đang follow'} 
                     followed={followingUser.length === 0 ? false : true} 
-                    data={followingUser} 
+                    data={followingUser}
+                    onClickSeeMore={handleSeeMoreFollowingAccount}
+                    showMoreBtn={isShowMore} 
                 />
             ) : (
                 <div className={cx('frame-container')}>

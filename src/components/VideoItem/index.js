@@ -70,10 +70,8 @@ function VideoItem({
     useEffect(() => {
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                if(!ContextVideo.showDetailVideo) {
-                    setIsPlaying(false);
-                    videoRef.current.pause();
-                }
+                setIsPlaying(false);
+                videoRef.current.pause();
             } else {             
                 if(inView && !ContextVideo.showDetailVideo) {
                     const playPromise = videoRef.current.play();
@@ -93,7 +91,7 @@ function VideoItem({
           document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [inView]);
+    }, [inView, ContextVideo.showDetailVideo]);
 
     useLayoutEffect(() => {
         updateInViewList(isInView, index)
@@ -197,6 +195,7 @@ function VideoItem({
         videoRef.current.pause();
         ContextVideo.setVideoId(item.id);
         ContextVideo.setPositionVideo(index);
+        ContextVideo.setShowDetailVideo(true);
         ContextVideo.handleShowDetailVideo();
     }
 

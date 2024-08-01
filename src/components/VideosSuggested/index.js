@@ -20,6 +20,11 @@ function VideosSuggested({ data = [] }) {
     const [onInview, setOnInview] = useState(false);
     const [isKeyDown, setIsKeyDown] = useState(false);
 
+    useEffect(() => {
+        setPositionCurrentVideo(ContextVideo.positionVideo);
+        
+    }, [ContextVideo.positionVideo])
+
     useLayoutEffect(() => {
         if(ContextVideo.showDetailVideo || isKeyDown) {
             ContextVideo.isInViewVideoList.forEach((video, index) => {

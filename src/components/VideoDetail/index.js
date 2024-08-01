@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 
@@ -67,7 +67,9 @@ function VideoDetail() {
     const [isPlaying, setIsPlaying] = useState(true);
     const [seekbar, setSeekbar] = useState(0);
     const [progress, setProgress] = useState(0);
-    const [currentTime, setCurrentTime] = useState('00:00')
+    const [currentTime, setCurrentTime] = useState('00:00');
+    const [nextVideo, setNextVideo] = useState(false);
+    const [prevVideo, setPrevVideo] = useState(false);
 
     useEffect(() => {
         const videoId = ContextVideo.listVideo[ContextVideo.positionVideo]?.id;
@@ -238,7 +240,7 @@ function VideoDetail() {
     useEffect(() => {
         const updateTime = () => {
             const minutes = Math.floor(videoRef.current.currentTime / 60);
-            const seconds = Math.floor(videoRef.current.currentTime % 60);
+            const seconds = Math.round(videoRef.current.currentTime % 60);
 
             setCurrentTime(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`)
             
@@ -294,7 +296,52 @@ function VideoDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ContextVideo.valueVolume])
 
+    const handleSeePrevVideo = (e) => {
+        e.stopPropagation();
+        setPrevVideo(true);
+    }
+    
+    const handleSeeNextVideo = (e) => {
+        e.stopPropagation();
+        setNextVideo(true);
+    }
 
+    useLayoutEffect(() => {
+        if(prevVideo) {
+            ContextVideo.setPositionVideo(ContextVideo.positionVideo - 1);
+            setPrevVideo(false);
+        }
+        
+        if(nextVideo) {
+            ContextVideo.setPositionVideo(ContextVideo.positionVideo + 1);
+            setNextVideo(false);
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [prevVideo, nextVideo])
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            const ARROW_UP = 38;
+            const ARROW_DOWN = 40;
+            if(e.keyCode === ARROW_UP) {
+                e.preventDefault();
+                setPrevVideo(true);
+                    
+            } else if(e.keyCode === ARROW_DOWN) {
+                e.preventDefault();
+                setNextVideo(true);
+            }
+
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <div className={cx('wrapper')}>
@@ -317,6 +364,7 @@ function VideoDetail() {
                             src={videoItem?.file_url} 
                             poster={videoItem?.thumb_url}
                             loop
+                            autoPlay
                         />
                     </div>
                 </div>
@@ -351,10 +399,12 @@ function VideoDetail() {
                 <button className={cx('menu-popper')}>
                     <MenuVideoIcon/>
                 </button>
-                { !(ContextVideo.positionVideo === 0) && <button className={cx('prev-video-btn')}>
-                    <ArrowLeftIcon/>
-                </button>}
-                <button className={cx('next-video-btn')}>
+                { !(ContextVideo.positionVideo === 0) && 
+                    <button className={cx('prev-video-btn')} onClick={handleSeePrevVideo}>
+                        <ArrowLeftIcon/>
+                    </button>
+                }
+                <button className={cx('next-video-btn')} onClick={handleSeeNextVideo}>
                     <ArrowRightIcon/>
                 </button>
                 <button className={cx('mini-video')}>
