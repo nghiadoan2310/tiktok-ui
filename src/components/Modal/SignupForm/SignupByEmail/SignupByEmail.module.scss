@@ -16,6 +16,14 @@
     color: rgb(22, 24, 35);
 }
 
+.error-email {
+    font-size: 1.3rem;
+    line-height: 15px;
+    margin: 4px 0px 9px 0px;
+    color: rgb(255, 76, 58);
+    display: flex;
+}
+
 .input-container {
     position: relative;
     margin-bottom: 9px;
@@ -31,6 +39,10 @@
         line-height: 100%;
         font-size: 16px;
         caret-color: rgb(254, 44, 85);
+    }
+
+    .error-email {
+        border: 1px solid rgb(255, 76, 58);
     }
 }
 

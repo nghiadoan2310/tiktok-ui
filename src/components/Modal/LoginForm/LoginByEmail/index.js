@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 
 import styles from "./LoginByEmail.module.scss";
 import Button from "~/components/Button";
-import { EyeIcon, LoadingLoginIcon, NoEyeIcon } from "~/components/icons";
+import { EyeIcon, LoadingLoginIcon, NoEyeIcon, WarnIcon } from "~/components/icons";
 
 import { NotifyContext } from "~/components/Provider";
 
@@ -22,6 +22,7 @@ function LoginByEmail() {
     const [valuePassword, setValuePassword] = useState('');
     const [seePassword, setSeePassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorLogin, setErrorLogin] = useState(false);
 
     useEffect(() => {
         if(!(valueEmail && valuePassword)) {
@@ -63,13 +64,14 @@ function LoginByEmail() {
             
             setTimeout(() => {
                 setIsLoading(false);
-                window.location.href = '/';
+                window.location.reload();
             }, 300)
             
+            setErrorLogin(false)
             ContextNotify.setIsNotify(true);
             ContextNotify.setMessage('Đăng nhập thành công');
         } else {
-
+            setErrorLogin(true)
             setTimeout(() => {
                 setIsLoading(false);
             }, 300)
@@ -106,11 +108,18 @@ function LoginByEmail() {
                         value={valuePassword}
                         onChange={handleChangePassword}
                         onKeyDown={handlePressEnter}
+                        className={cx({ 
+                            'error': errorLogin
+                        })}
                     />
                     <div className={cx('password-icon')} onClick={handleSeePassword}>
-                        { seePassword ? <EyeIcon/> : <NoEyeIcon/>}
+                        {errorLogin && <WarnIcon/>}
+                        <div className={cx('show-hide-password')}>
+                            { seePassword ? <EyeIcon/> : <NoEyeIcon/>}
+                        </div>
                     </div>
                 </div>
+                {errorLogin && <div className={cx('error-login')}>Tài khoản hoặc mật khẩu không chính xác</div>}
                 <Button className={cx('forget-password')}>Quên mật khẩu?</Button>
                 <button ref={submitBtnRef} className={cx('submit-btn')} onClick={handleLogin}>
                     { isLoading ? <LoadingLoginIcon/> : 'Đăng nhập' }

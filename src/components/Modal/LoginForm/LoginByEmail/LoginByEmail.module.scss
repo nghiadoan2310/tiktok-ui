@@ -32,6 +32,10 @@
         font-size: 16px;
         caret-color: rgb(254, 44, 85);
     }
+
+    .error {
+        border: 1px solid rgb(255, 76, 58);
+    }
 }
 
 .password-icon {
@@ -45,6 +49,20 @@
     font-size: 20px;
     opacity: 0.5;
     cursor: pointer;
+
+    .show-hide-password {
+        display: flex;
+        align-items: center;
+        margin-inline-start: 16px;
+    }
+}
+
+.error-login {
+    font-size: 1.3rem;
+    line-height: 15px;
+    margin: 4px 0px;
+    color: rgb(255, 76, 58);
+    display: flex;
 }
 
 .forget-password {

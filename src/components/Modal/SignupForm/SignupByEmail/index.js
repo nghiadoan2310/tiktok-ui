@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import classNames from "classnames/bind";
 
 import styles from "./SignupByEmail.module.scss";
-import { CheckboxIcon, EyeIcon, LoadingLoginIcon, NoEyeIcon } from "~/components/icons";
+import { CheckboxIcon, EyeIcon, LoadingLoginIcon, NoEyeIcon, WarnIcon } from "~/components/icons";
+
+import { NotifyContext } from "~/components/Provider";
+
 import * as authService from '~/Services/authService'
 
 const cx = classNames.bind(styles);
 
 function SignupByEmail() {
+    const ContextNotify = useContext(NotifyContext);
 
     const passwordInputRef = useRef(null);
     const submitBtnRef = useRef(null);
@@ -16,6 +20,7 @@ function SignupByEmail() {
     const [valuePassword, setValuePassword] = useState('');
     const [seePassword, setSeePassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorSignup, setErrorSignup] = useState(false);
 
     useEffect(() => {
         if(!(valueEmail && valuePassword)) {
@@ -44,18 +49,26 @@ function SignupByEmail() {
     }
 
     const handleSignup = async () => {
+        const regex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+        if(!regex.test(valueEmail)) {
+            setErrorSignup(true);
+            return;
+        }
 
         setIsLoading(true);
         const data = await authService.postSignup('email', valueEmail, valuePassword)
 
         if(!!data) {
-            alert('Đăng ký thành công')
+            setErrorSignup(false);
+            ContextNotify.setIsNotify(true);
+            ContextNotify.setMessage('Đăng ký tài khoản thành công');
 
             setTimeout(() => {
                 setIsLoading(false);
             }, 300)
         } else {
-            alert('Đăng ký không thành công')
+            ContextNotify.setIsNotify(true);
+            ContextNotify.setMessage('Có lỗi xảy ra. Đăng ký tài khoản không thành công');
 
             setTimeout(() => {
                 setIsLoading(false);
@@ -75,8 +88,15 @@ function SignupByEmail() {
                         placeholder="Địa chỉ Email" 
                         value={valueEmail}
                         onChange={handleChangeEmail}
+                        className={cx({
+                            'error-email': errorSignup,
+                        })}
                     />
+                    { errorSignup && <div className={cx('password-icon')} onClick={handleSeePassword}>
+                        <WarnIcon/>
+                    </div> }
                 </div>
+                {errorSignup && <div className={cx('error-email')}>Email không hợp lệ</div>}
                 <div className={cx('input-container')}>
                     <input 
                         ref={passwordInputRef}
