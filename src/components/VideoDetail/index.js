@@ -86,7 +86,7 @@ function VideoDetail() {
 
         const fetchApi = async () => {
             //result là giá trị trả về của việc tìm kiếm
-            const result_video = await videoService.getAVideo(videoId ?? videoId ?? window.location.pathname.split('/')[3]);
+            const result_video = await videoService.getAVideo( videoId ?? window.location.pathname.split('/')[3]);
             const result_comment_list = await commentService.getComment(ContextAuth.tokenStr, videoId ?? window.location.pathname.split('/')[3]);
 
             setVideoItem(result_video);
@@ -186,8 +186,8 @@ function VideoDetail() {
     //Khi nhấn vào nút đóng xem chi tiết video
     const handleCloseDetailVideo = () => {
         ContextVideo.setShowDetailVideo(false);
-        navigate('/')
-        document.body.style.overflowY = 'auto'
+        navigate(ContextVideo.locationPathname)
+        document.body.style.overflowY = 'auto';
     }
 
     //Xử lý khi nhấn nút chia sẻ liên kết

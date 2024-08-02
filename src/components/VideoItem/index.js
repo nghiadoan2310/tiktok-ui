@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { useInView } from 'react-intersection-observer';
 
 import { VideoContext } from '../Provider';
+
 import styles from './VideoItem.module.scss';
 import VideoActions from '../VideoActions';
 import VideoBottom from '~/components/VideoOverlay/VideoBottom';
@@ -195,7 +196,7 @@ function VideoItem({
         videoRef.current.pause();
         ContextVideo.setVideoId(item.id);
         ContextVideo.setPositionVideo(index);
-        ContextVideo.setShowDetailVideo(true);
+        ContextVideo.setLocationPathname(window.location.pathname);
         ContextVideo.handleShowDetailVideo();
     }
 

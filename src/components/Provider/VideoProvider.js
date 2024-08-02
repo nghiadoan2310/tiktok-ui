@@ -15,6 +15,7 @@ function VideoProvider({ children }) {
     const [mutedVideo, setMutedVideo] = useState(true);
     const [recommendVideoPosition, setRecommendVideoPosition] = useState(0);
     const [isChangeState, setIsChangeState] = useState(false);
+    const [locationPathname, setLocationPathname] = useState('');
 
     const handleShowDetailVideo = () => {
         setShowDetailVideo(true);
@@ -46,6 +47,7 @@ function VideoProvider({ children }) {
         mutedVideo,
         recommendVideoPosition,
         isChangeState,
+        locationPathname,
         setListVideo,
         setPositionVideo,
         setRightMouseX,
@@ -58,6 +60,7 @@ function VideoProvider({ children }) {
         setMutedVideo,
         setRecommendVideoPosition,
         setIsChangeState,
+        setLocationPathname,
         handleShowDetailVideo,
     };
 

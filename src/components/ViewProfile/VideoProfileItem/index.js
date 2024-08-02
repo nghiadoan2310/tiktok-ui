@@ -1,5 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import classNames from "classnames/bind";
+
+import { VideoContext } from "~/components/Provider";
 
 import styles from "./VideoProfileItem.module.scss";
 import { LikeCountVideoIcon } from "~/components/icons";
@@ -7,6 +9,7 @@ import { LikeCountVideoIcon } from "~/components/icons";
 const cx = classNames.bind(styles);
 
 function VideoProfileItem({data = {}, index, setVideo=() => {}}) {
+    const ContextVideo = useContext(VideoContext)
     const videoRef = useRef();
 
     useEffect(() => {
@@ -20,10 +23,20 @@ function VideoProfileItem({data = {}, index, setVideo=() => {}}) {
         setVideo(videoRef.current)
     }
 
+    const handleViewDetail = () => {
+        ContextVideo.setVideoId(data.id);
+        ContextVideo.setPositionVideo(index);
+        ContextVideo.setLocationPathname(window.location.pathname);
+        ContextVideo.handleShowDetailVideo();
+    }
+
     return (
         <section className={cx('video-user-item')} onContextMenu={(e) => e.preventDefault()}>
             <div className={cx('item-container')} onMouseOver={handleMouseOverVideo}>
-                <div className={cx('video-container')}>
+                <div 
+                    className={cx('video-container')} 
+                    onClick={handleViewDetail}
+                >
                     <video 
                         ref={videoRef} 
                         src={data.file_url} 

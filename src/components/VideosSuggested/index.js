@@ -3,9 +3,6 @@ import classNames from 'classnames/bind';
 
 import styles from './VideosSuggested.module.scss';
 import VideoItem from '../VideoItem';
-import Portal from '../Portal';
-import MenuRightMouse from '../VideoOverlay/MenuRightMouse';
-import VideoDetail from '../VideoDetail';
 import { VideoContext } from "../Provider";
 
 const cx = classNames.bind(styles);
@@ -21,8 +18,14 @@ function VideosSuggested({ data = [] }) {
     const [isKeyDown, setIsKeyDown] = useState(false);
 
     useEffect(() => {
+        ContextVideo.setPositionVideo(0)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
         setPositionCurrentVideo(ContextVideo.positionVideo);
-        
+
     }, [ContextVideo.positionVideo])
 
     useLayoutEffect(() => {
@@ -107,11 +110,6 @@ function VideosSuggested({ data = [] }) {
                     )}
                 </Fragment>
             ))}
-
-            <Portal>
-                <MenuRightMouse></MenuRightMouse>
-                {ContextVideo.showDetailVideo && <VideoDetail/>}
-            </Portal>
         </div>
     );
 }

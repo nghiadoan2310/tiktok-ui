@@ -5,12 +5,13 @@ import classNames from "classnames/bind";
 import styles from "./ViewProfile.module.scss";
 import { EmptyVideoProfileIcon, LockLikedVideoIcon, LockProfileIcon } from "../icons";
 import VideoProfileItem from "./VideoProfileItem";
+import ProfileHeader from "./ProfileHeader";
 
 import * as userService from '~/Services/userService'
 import * as videoService from '~/Services/videoService'
 
 import { AuthContext } from "~/components/Provider";
-import ProfileHeader from "./ProfileHeader";
+import { VideoContext } from "~/components/Provider";
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +19,7 @@ function ViewProfile() {
     const location = useLocation();
 
     const ContextAuth = useContext(AuthContext);
+    const ContextVideo = useContext(VideoContext);
 
     const videoTabRef = useRef();
     const LikedTabRef = useRef();
@@ -51,6 +53,7 @@ function ViewProfile() {
             const result = await userService.getAnUser(ContextAuth.tokenStr, profileUsername);
 
             if(result) {
+                ContextVideo.setListVideo(result.videos)
                 setProfileData(result)
             }else {
                 console.log('Lấy thông tin người dùng thất bại')
