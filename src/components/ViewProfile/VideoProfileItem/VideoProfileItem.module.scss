@@ -1,0 +1,58 @@
+.video-user-item {
+    width: 100%;
+    cursor: pointer;
+}
+
+.item-container {
+    width: 100%;
+    position: relative;
+    padding-top: 133.33%;
+}
+
+.video-container {
+    width: 100%;
+    position: absolute;
+    inset: 0;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+}
+
+.bottom-container {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+    padding-left: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.Like-count {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    margin-left: 4px;
+}
+
+.description-container {
+    display: flex;
+    position: relative;
+}
+
+.description-content {
+    font-weight: 400;
+    padding: 2px 4px 0px;
+    height: 28px;
+    overflow: hidden;
+    box-sizing: content-box;
+    width: 100%;
+    margin-top: 4px;
+
+    p {
+        display: block;
+    }
+}

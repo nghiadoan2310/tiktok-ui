@@ -1,0 +1,29 @@
+.share-popper {
+    width: 280px;
+    padding: 8px 0px;
+    max-height: 448px;
+    min-height: unset;
+    overflow: hidden auto;
+}
+
+.share-option {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    padding: 0;
+    height: unset;
+}
+
+.share-item {
+    display: flex;
+    padding: 11px 16px;
+    margin: 0px 3px 0px 4px;
+}
+
+.share-title {
+    margin-left: 12px;
+}
+
+.more-btn {
+    background-color: transparent;
+}

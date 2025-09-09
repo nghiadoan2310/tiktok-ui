@@ -1,0 +1,158 @@
+/* css toàn cục */
+@import 'normalize.css';
+
+:root {
+    --primary: #fe2c55;
+    --font-TikTok: TikTokFont;
+    --font-TikTok-Display: TikTokDisplayFont;
+
+    [data-theme= "dark"] {
+        --background-color: rgba(0, 0, 0, 1);
+        --text-color: rgba(246, 246, 246, 1);
+        --text-color-policy: rgba(255, 255, 255, 0.5);
+        --separate-color: rgba(255, 255, 255, 0.5);
+        --background-icon-color: rgba(255, 255, 255, 0.12);
+        --icon-color: rgba(255, 255, 255, 0.9);
+        --count-color: rgba(255, 255, 255, 0.75);
+    }
+
+    [data-theme= "light"] {
+        --background-color: rgba(255, 255, 255, 1);
+        --text-color: rgba(22, 24, 35, 1);
+        --text-color-policy: rgba(22, 24, 35, 0.5);
+        --separate-color: rgba(22, 24, 35, 0.12);
+        --background-icon-color: rgba(22, 24, 35, 0.06);
+        --icon-color: rgb(22, 24, 35);
+        --count-color: rgba(22, 24, 35, 0.75);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family:var(--font-TikTok);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed; //tối ưu hiển thị
+    overflow-y: overlay;
+}
+
+//font
+@font-face {
+    font-family: TikTokFont;
+    src: url('/assets/font/TikTokFont-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/assets/font/TikTokFont-Semibold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('/assets/font/TikTokFont-Bold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: TikTokDisplayFont;
+    src: url('/assets/font/TikTokDisplayFont-Semibold.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: TikTokDisplayFont;
+    src: url('/assets/font/TikTokDisplayFont-Bold.woff2');
+    font-weight: 700;
+}
+
+//srollbar
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--background-icon-color);
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--background-icon-color);
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+//css chung cho thẻ button, input, Link
+button,
+input {
+    font-family: var(--font-TikTok);
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+a, Link {
+    text-decoration: none;
+    color: inherit;
+}
+
+// Nút nhấn màu primary(chủ đạo của trang web)
+.primary {
+    color: #fff;
+    background-color: var(--primary);
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), rgb(254, 44, 85);
+    }
+
+    &:active {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), rgb(254, 44, 85);
+    }
+}
+
+//Tippy
+.tippy-box {
+    border-radius: 8px;
+    background-color: rgba(84, 84, 84, 0.92);
+}
+
+.tippy-content {
+    padding: 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.tippy-box[data-placement^=bottom]>.tippy-arrow:before {
+    top: -8px;
+    border-bottom-color: rgba(84, 84, 84, 0.92);
+}

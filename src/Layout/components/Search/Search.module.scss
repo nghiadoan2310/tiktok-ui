@@ -1,0 +1,106 @@
+.search,
+.search-result {
+    width: 500px;
+}
+
+.search {
+    position: relative;
+    min-width: 200px;
+    padding: 0 0 0 16px;
+    background-color: #f1f1f2;
+    border-radius: 92px;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid transparent;
+
+    input {
+        width: 100%;
+        padding: 12px 42px 12px 0;
+        border: none;
+        outline: none;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 21px;
+        color: rgb(22, 24, 35);
+        caret-color: rgb(254, 44, 85); //Đổi màu trỏ chuột trong ô input
+        background-color: transparent;
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, .75);
+    }
+
+    &::after {
+        content: "";
+        width: 1px;
+        height: calc(100% - 18px);
+        background-color: rgba(22, 24, 35, .12);
+        position: absolute;
+        right: 52px;
+        top: 9px;
+    }
+
+    &:focus-within,
+    &:hover {
+        border-color: #c5c6c9;
+    }
+
+    &:hover {
+        .search-btn {
+            background-color: rgba(22, 24, 35, 0.06);
+        }
+    }
+}
+
+.search-title {
+    padding: 5px 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
+
+.clear,
+.loading {
+    font-size: 1.6rem;
+    position: absolute;
+    right: 52px + 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, .34);
+    border: none;
+
+}
+
+.loading {
+    animation: spinner 1s linear infinite; //tên hiệu ứng (spinner) - thời gian - kiểu - số lần (vô hạn) 
+}
+
+@keyframes spinner {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-btn {
+    display: flex;
+    justify-content: center;
+    width: 60px;
+    padding: 11px 0;
+    border-top-right-radius: 92px;
+    border-bottom-right-radius: 92px;
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+
+    &:hover {
+        color: #4c4e57;
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}

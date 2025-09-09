@@ -1,0 +1,49 @@
+.copy-notify-container {
+    position: fixed;
+    top: 16px;
+    left: 0px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    z-index: 3003;
+    width: 100%;
+    margin-top: -8px;
+    padding: 8px 0px;
+    text-align: center;
+    pointer-events: none;
+    animation: showNotify .18s linear 0s forwards;
+}
+
+.hide-notify {
+    animation: hideNotify .18s linear 0s forwards;
+}
+
+.copy-notify-content {
+    background-color: rgba(84, 84, 84, 0.92);
+    display: inline-block;
+    padding: 10px 8px;
+    max-width: 100%;
+    border-radius: 2px;
+}
+
+.copy-notify-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+}
+
+@keyframes showNotify {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideNotify {
+    0% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}

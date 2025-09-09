@@ -1,0 +1,21 @@
+.list-video {
+    max-width: 692px;
+    margin: 0 auto;
+}
+
+.video-item {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+.video-item[shape="vertical"] {
+    height: calc(-60px + 100vh);
+}
+
+.video-item[shape="horizontal"] {
+    height: unset;
+}

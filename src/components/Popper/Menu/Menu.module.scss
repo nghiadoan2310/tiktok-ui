@@ -1,0 +1,59 @@
+.menu-list {
+    min-width: 223px;
+
+    .menu-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-weight: 600;
+        padding: 12px 16px;
+        border-radius: 0;
+        height: 48px;
+    }
+
+    .separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
+
+    .menu-popper {
+        min-height: 0;
+        padding: 8px 0;
+    }
+}
+
+.menu-body {
+    overflow-y: auto;
+}
+
+
+.menu-item {
+    width: 100%;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+
+//Header
+.header {
+    position: relative;
+    height: 62px;
+    margin: -8px 0;
+    flex-shrink: 0;     //Chánh việc co header menu khi cuộn 
+}
+
+.back-btn {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+}

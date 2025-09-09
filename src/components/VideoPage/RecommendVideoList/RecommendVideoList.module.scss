@@ -1,0 +1,126 @@
+.background-end-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    border-radius: inherit;
+}
+
+.recommend-video-list-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 60px);
+    border-radius: 4px;
+    z-index: 5;
+}
+
+.recommend-prev-video-btn,
+.recommend-next-video-btn {
+    position: absolute;
+    height: 348px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.recommend-prev-video-btn {
+    left: 0;
+    transform: rotate(-180deg);
+    margin: 0px 24px 0px 8px;
+}
+
+.recommend-next-video-btn {
+    right: 0;
+    margin: 0px 8px 0px 24px;
+}
+
+.recommend-list-wrapper {
+    height: 348px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin: auto;
+}
+
+.recommend-item-container {
+    width: 220px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.recommend-item-wrapper {
+    position: relative;
+    width: 100%;
+    height: 292px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: rgba(22, 24, 35, 0.06);
+    }
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mask {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(rgba(22, 24, 35, 0) 2.92%, rgba(22, 24, 35, 0.5) 98.99%);
+}
+
+.play-count {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(22, 24, 35, 0) 2.92%, rgba(22, 24, 35, 0.3) 98.99%);
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    line-height: 17px;
+    padding: 12px 8px 8px;
+
+    svg {
+        margin-right: 4px;
+    }
+}
+
+.recommend-item-description {
+    height: 48px;
+    font-size: 1.6rem;
+    line-height: 24px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+}

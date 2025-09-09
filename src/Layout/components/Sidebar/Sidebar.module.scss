@@ -1,0 +1,51 @@
+.wrapper {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    width: 240px;
+    padding: 20px 8px 26px 8px;
+    overflow: hidden;
+    overscroll-behavior-y: contain;
+    z-index: 998;
+
+    &:hover {
+        overflow: hidden overlay;
+    }
+}
+
+.frame-container {
+    position: relative;
+    padding: 20px 8px 24px;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 8px;
+        right: 8px;
+        height: 1px;
+        background: var(--separate-color);
+    }
+}
+
+.login-tip {
+    font-size: 1.6rem;
+    line-height: 21px;
+    color: var(--text-color-policy);
+}
+
+.login-btn {
+    min-width: 168px;
+    min-height: 48px;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 500;
+    margin-top: 20px;
+    width: 208px;
+    justify-content: center;
+    padding: 6px 8px;
+    user-select: none;
+    font-family: var(--font-TikTok-Display);
+    color: rgb(254, 44, 85);
+    border: 1px solid rgb(254, 44, 85);
+}

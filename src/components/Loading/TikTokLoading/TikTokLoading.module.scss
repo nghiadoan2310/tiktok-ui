@@ -1,0 +1,45 @@
+.loading-container {
+    width: 80px;
+    height: 40px;
+    position: relative;
+  }
+  
+  .loading-container::before,
+  .loading-container::after {
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    top: 6px;
+    border-radius: 28px;
+    background: #ff3e9e;
+    mix-blend-mode: multiply;
+    animation: tiktok 1s infinite linear;
+  }
+  
+  .loading-container::after {
+    background-color: #4de8f4;
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes tiktok {
+    0%, 
+    100% {
+      left: 0;
+      z-index: 1;
+      transform: scale(1);
+    }
+    25% {
+      left: 20px;
+      z-index: 1;
+      transform: scale(1);
+    }
+    50% {
+      left: 30px;
+      transform: scale(1);
+    }
+    75% {
+      left: 20px;
+      transform: scale(1);
+    }
+  }

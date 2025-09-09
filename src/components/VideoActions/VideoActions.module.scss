@@ -1,0 +1,80 @@
+.wrapper,
+.action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.follow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.follow-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    color: #fff;
+    background-color: var(--primary);
+
+    &:hover {
+        background-color: rgba(224, 39, 75, 1);
+    }
+}
+
+.unfollow-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    background-color: #fff;
+
+    svg {
+        fill: rgb(254, 44, 85);
+    }
+}
+
+.action {
+    background-color: transparent;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 6px;
+    border-radius: 50%;
+    background-color: var(--background-icon-color);
+    color: var(--icon-color);
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.14);
+    }
+}
+
+.count {
+    color: var(--count-color);
+    font-weight: 700;
+    line-height: 21px;
+}

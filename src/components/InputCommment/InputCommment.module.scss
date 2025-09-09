@@ -1,0 +1,54 @@
+.action-comment-container {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    background-color: rgba(22, 24, 35, 0.06);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 0px 9px;
+}
+
+.action-comment-container:focus-within {
+    border: 1px solid #c5c6c9;
+}
+
+.input-container {
+    flex: 1;
+    line-height: 17px;
+    margin: 10px 8px 10px 0px;
+}
+
+.input-comment {
+    width: 100%;
+    font-size: 1.4rem;
+    color: rgb(22, 24, 35);
+    background-color: transparent;
+    caret-color: rgb(254, 44, 85);
+
+    &::placeholder {
+        color: rgb(22, 24, 35);
+    }
+}
+
+.input-comment-btn {
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 8px;
+}
+
+.comment-btn {
+    flex: 0 0 48px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 39px;
+    margin-right: 4px;
+    text-align: right;
+    color: rgb(254, 44, 85);
+    background-color: transparent;
+}
+
+.comment-btn:disabled {
+    color: rgba(22, 24, 35, 0.34);
+}
